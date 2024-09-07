@@ -1,4 +1,4 @@
-package geeksforgeeks;
+package geeksforgeeks.week1;
 
 import java.io.FileNotFoundException;
 

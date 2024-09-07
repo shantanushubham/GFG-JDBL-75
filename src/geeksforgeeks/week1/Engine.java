@@ -1,4 +1,4 @@
-package geeksforgeeks;
+package geeksforgeeks.week1;
 
 //public abstract class Engine {
 //
@@ -14,8 +14,6 @@ package geeksforgeeks;
 //    }
 //
 //}
-
-import exceptions.EngineFailureException;
 
 public interface Engine {
 

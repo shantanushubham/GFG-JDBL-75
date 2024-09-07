@@ -1,12 +1,12 @@
-package geeksforgeeks;
+package geeksforgeeks.week1;
 
-public class ElectricEngine extends EngineDetails implements Engine {
+public class PetrolEngine implements Engine {
 
     @Override
     public void start() {
-        System.out.println ( "Starting Electric Engine" );
+        System.out.println ( "Starting Petrol Engine" );
         // Code to start Electric Engine
-        System.out.println ( "Electric Engine Started" );
+        System.out.println ( "Petrol Engine Started" );
     }
 
     @Override

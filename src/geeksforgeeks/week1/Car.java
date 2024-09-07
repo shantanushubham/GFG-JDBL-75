@@ -1,4 +1,4 @@
-package geeksforgeeks;
+package geeksforgeeks.week1;
 
 public class Car {
 
