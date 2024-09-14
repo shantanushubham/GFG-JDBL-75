@@ -1,0 +1,32 @@
+/*
+1. Dependency Management
+2. Consistent Build Process
+3. Project Structure Standardization
+4. Multi Module Project Support
+5. Integration with CI/CD Tools
+6. Project Information and Documentation
+7. Build Environment Independence
+8. Ease of use and Extensibility
+*/
+
+/*
+Built-in lifecycles of Maven
+1. Default -- Project Deployment 22
+2. Clean -- Project cleaning 3
+3. Site -- Project site documentation 4
+*/
+
+/*
+Scopes
+1. Compile (Default) -> compile, test, runtime
+2. Provided -> compile, !runtime
+3. Runtime -> !compile, runtime, test
+4. Test -> test
+5. System -> Similar to provided, but it requires an explicit path to the JAR on the local system.
+6. Import -> Special scope, which is used only for dependency management in the
+        <dependencyManagement> section.
+ */
+
+// A B
+// You need B to run your code
+// You need A to download B on your machine

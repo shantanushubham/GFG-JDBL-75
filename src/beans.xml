@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans"
+>
+    <bean id="connection" class="geeksforgeeks.week4.Connection"></bean>
+    <bean id="car" class="geeksforgeeks.week1.Car"></bean>
+</beans>
+
+<!--
+ApplicationContext context = new ClassPathXmlApplicationContext("<path-to-xml>")
+Connection connection = (Connection) context.getBean("connection")
+
+BeanFactory factory = new XmlBeanFactory(new FileSystemResource("<path-to-xml>"))
+Connection connection = (Connection) factory.getBean("connection")
+-->
