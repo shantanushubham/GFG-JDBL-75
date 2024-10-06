@@ -1,9 +1,12 @@
 package com.geeksforgeeks.springapp.controller;
 
 import com.geeksforgeeks.springapp.model.Product;
+import com.geeksforgeeks.springapp.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +19,13 @@ import java.util.List;
 @RestController
 @Slf4j
 public class ProductController {
+
+    private ProductRepository productRepository;
+
+    @Autowired
+    public ProductController(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     public List<Product> getAllProducts() {
         log.info ( "Fetching the list of products" );
@@ -56,14 +66,16 @@ public class ProductController {
 
     @GetMapping("/get-products")
     public ResponseEntity<List<Product>> getProducts() {
-        List<Product> productList = this.getAllProducts ();
+        List<Product> productList = this.productRepository.findAll ();
         return new ResponseEntity<> ( productList, HttpStatus.OK );
     }
 
     @PostMapping("/add-product")
+    @Transactional(rollbackFor = Exception.class)
     public ResponseEntity<Product> addNewProduct1(@RequestBody Product product) {
-        this.addNewProduct ( product );
-        return new ResponseEntity<> ( product, HttpStatus.CREATED );
+        Product savedProduct = this.productRepository.save ( product );
+        log.info ( "Product Added. Returned value: {}", savedProduct );
+        return new ResponseEntity<> ( savedProduct, HttpStatus.CREATED );
     }
 
 }
