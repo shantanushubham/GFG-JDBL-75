@@ -2,6 +2,7 @@ package com.geeksforgeeks.library.elib.controller;
 
 import com.geeksforgeeks.library.elib.entity.Book;
 import com.geeksforgeeks.library.elib.service.BookService;
+import com.geeksforgeeks.library.elib.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +16,12 @@ import java.util.UUID;
 public class BookController {
 
     private final BookService bookService;
+    private final RedisService redisService;
 
     @Autowired
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, RedisService redisService) {
         this.bookService = bookService;
+        this.redisService = redisService;
     }
 
     @PostMapping("/add")
@@ -30,6 +33,8 @@ public class BookController {
     @GetMapping("/list")
     public ResponseEntity<List<Book>> getAllBooks() {
         List<Book> bookList = this.bookService.getAllBooks ();
+        this.redisService.addToCache("list", bookList);
+        List<Book> testList = (List<Book>) this.redisService.getCacheData("list");
         return new ResponseEntity<> ( bookList, HttpStatus.OK );
     }
 

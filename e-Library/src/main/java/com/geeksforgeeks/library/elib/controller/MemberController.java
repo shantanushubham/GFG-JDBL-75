@@ -23,26 +23,26 @@ public class MemberController {
 
     @PostMapping("/add")
     public ResponseEntity<Member> addMember(@RequestBody Member member) {
-        Member addedMember = this.memberService.addMember ( member );
-        return new ResponseEntity<> ( addedMember, HttpStatus.CREATED );
+        Member addedMember = this.memberService.addMember(member);
+        return new ResponseEntity<>(addedMember, HttpStatus.CREATED);
     }
 
     @GetMapping("/list")
     public ResponseEntity<List<Member>> getAllMembers() {
-        List<Member> memberList = this.memberService.getAllMembers ();
-        return new ResponseEntity<> ( memberList, HttpStatus.OK );
+        List<Member> memberList = this.memberService.getAllMembers();
+        return new ResponseEntity<>(memberList, HttpStatus.OK);
     }
 
     @GetMapping("/{memberId}")
     public ResponseEntity<Member> getBookById(@PathVariable UUID memberId) {
-        Member member = this.memberService.getMemberById ( memberId );
-        return new ResponseEntity<> ( member, HttpStatus.OK );
+        Member member = this.memberService.getMemberById(memberId);
+        return new ResponseEntity<>(member, HttpStatus.OK);
     }
 
     @PutMapping("/")
     public ResponseEntity<Member> updateMember(@RequestBody Member member) {
-        Member updatedMember = this.memberService.updateMember ( member );
-        return new ResponseEntity<> ( updatedMember, HttpStatus.OK );
+        Member updatedMember = this.memberService.updateMember(member);
+        return new ResponseEntity<>(updatedMember, HttpStatus.OK);
     }
 
 }

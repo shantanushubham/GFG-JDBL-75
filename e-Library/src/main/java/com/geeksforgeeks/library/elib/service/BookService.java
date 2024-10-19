@@ -22,19 +22,19 @@ public class BookService {
     }
 
     public Book addBook(Book book) {
-        log.info ( "Saving a new book" );
-        Book savedBook = this.bookRepository.save ( book );
-        log.info ( "Saved a new book with ID: {}", savedBook.getId () );
+        log.info("Saving a new book");
+        Book savedBook = this.bookRepository.save(book);
+        log.info("Saved a new book with ID: {}", savedBook.getId());
         return savedBook;
     }
 
     public List<Book> getAllBooks() {
-        return this.bookRepository.findAll ();
+        return this.bookRepository.findAll();
     }
 
     public Book getBookById(UUID bookId) {
-        Optional<Book> bookOptional = this.bookRepository.findById ( bookId );
-        return bookOptional.orElse ( null );
+        Optional<Book> bookOptional = this.bookRepository.findById(bookId);
+        return bookOptional.orElse(null);
     }
 
 }
