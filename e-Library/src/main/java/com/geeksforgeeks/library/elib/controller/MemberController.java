@@ -21,12 +21,6 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<Member> addMember(@RequestBody Member member) {
-        Member addedMember = this.memberService.addMember(member);
-        return new ResponseEntity<>(addedMember, HttpStatus.CREATED);
-    }
-
     @GetMapping("/list")
     public ResponseEntity<List<Member>> getAllMembers() {
         List<Member> memberList = this.memberService.getAllMembers();

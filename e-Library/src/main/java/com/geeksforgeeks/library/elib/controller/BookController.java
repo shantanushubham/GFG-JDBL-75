@@ -33,8 +33,8 @@ public class BookController {
     @GetMapping("/list")
     public ResponseEntity<List<Book>> getAllBooks() {
         List<Book> bookList = this.bookService.getAllBooks ();
-        this.redisService.addToCache("list", bookList);
-        List<Book> testList = (List<Book>) this.redisService.getCacheData("list");
+//        this.redisService.addToCache("list", bookList);
+//        List<Book> testList = (List<Book>) this.redisService.getCacheData("list");
         return new ResponseEntity<> ( bookList, HttpStatus.OK );
     }
 

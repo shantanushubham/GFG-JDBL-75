@@ -37,13 +37,13 @@ public class MemberControllerTest {
             .subscriptionStatus(SubscriptionStatus.ACTIVE)
             .build();
 
-    @Test
-    void addMember_whenAValidMemberIsPassed_shouldReturnCREATED() {
-        Mockito.when(this.memberService.addMember(member)).thenReturn(member);
-
-        ResponseEntity<Member> responseEntity = this.memberController.addMember(member);
-
-        Assertions.assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
-        Assertions.assertEquals(member, responseEntity.getBody());
-    }
+//    @Test
+//    void addMember_whenAValidMemberIsPassed_shouldReturnCREATED() {
+//        Mockito.when(this.memberService.addMember(member)).thenReturn(member);
+//
+//        ResponseEntity<Member> responseEntity = this.memberController.addMember(member);
+//
+//        Assertions.assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+//        Assertions.assertEquals(member, responseEntity.getBody());
+//    }
 }
