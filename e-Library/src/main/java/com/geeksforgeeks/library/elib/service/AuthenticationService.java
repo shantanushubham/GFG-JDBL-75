@@ -39,11 +39,5 @@ public class AuthenticationService {
         return member;
     }
 
-    public Member signUp(Member member) {
-        log.info("Saving a new member.");
-        member.setPassword(this.passwordEncoder.encode(member.getPassword()));
-        Member savedMember = this.memberRepository.save(member);
-        log.info("Saved a new member with ID: {}", member.getId());
-        return savedMember;
-    }
+
 }
