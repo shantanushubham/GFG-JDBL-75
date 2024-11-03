@@ -21,6 +21,7 @@
         <java.version>17</java.version>
         <spring.boot.version>3.3.5</spring.boot.version>
         <spring.cloud.version>2023.0.3</spring.cloud.version>
+        <spring.kafka.version>3.2.4</spring.kafka.version>
     </properties>
 
     <dependencyManagement>
@@ -47,6 +48,14 @@
                 <scope>test</scope>
                 <type>pom</type>
                 <version>${spring.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <scope>import</scope>
+                <type>pom</type>
+                <version>${spring.kafka.version}</version>
             </dependency>
 
         </dependencies>

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class ServiceTwoController {
 
-    private ServiceTwoService serviceTwoService;
+    private final ServiceTwoService serviceTwoService;
 
     @Autowired
     public ServiceTwoController(ServiceTwoService serviceTwoService) {

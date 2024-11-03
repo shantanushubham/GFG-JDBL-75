@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceTwoService {
 
-    private ServiceOneClient serviceOneClient;
+    private final ServiceOneClient serviceOneClient;
 
     @Autowired
     public ServiceTwoService(ServiceOneClient serviceOneClient) {
