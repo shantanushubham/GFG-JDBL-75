@@ -1,7 +1,7 @@
 package com.geeksforgeeks.gfgpay.useraccounts.controller;
 
 import com.geeksforgeeks.gfgpay.common.exceptions.NotFoundException;
-import com.geeksforgeeks.gfgpay.useraccounts.model.Account;
+import com.geeksforgeeks.gfgpay.common.models.Account;
 import com.geeksforgeeks.gfgpay.useraccounts.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,4 +39,6 @@ public class AccountController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
 }

@@ -1,7 +1,7 @@
 package com.geeksforgeeks.gfgpay.useraccounts.controller;
 
 import com.geeksforgeeks.gfgpay.common.exceptions.NotFoundException;
-import com.geeksforgeeks.gfgpay.useraccounts.model.User;
+import com.geeksforgeeks.gfgpay.common.models.User;
 import com.geeksforgeeks.gfgpay.useraccounts.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

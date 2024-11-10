@@ -1,5 +1,6 @@
-package com.geeksforgeeks.gfgpay.useraccounts.model;
+package com.geeksforgeeks.gfgpay.common.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,7 +25,12 @@ public class User {
 
     private String phone;
 
+    @JsonIgnore
     private String password;
 
+    private String role;
 
+    public String getUsername() {
+        return this.phone;
+    }
 }

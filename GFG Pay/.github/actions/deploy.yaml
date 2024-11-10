@@ -1,0 +1,53 @@
+name: Deploy GFG-Pay Backend
+
+on:
+  push:
+      branches:
+        - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: "openjdk"
+          java-version: "17"
+
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Setup SSH Key
+        run: echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+
+      - name: Upload the JAR to EC2
+        env:
+          EC2_HOST: "some-host-name"
+          EC2_USER: "some-user-name"
+        run: |
+          JAR_FILE= ./user-accounts/target/*.jar
+          echo "Found JAR file: $JAR_FILE"
+          
+          scp -i ~/.ssh/id_rsa $JAR_FILE $EC2_USER@$EC2_HOST:/home/$EC2_USER/
+
+      - name: Deploy the JAR on EC2
+        env:
+          EC2_HOST: "some-host-name"
+          EC2_USER: "some-user-name"
+        run: |
+          ssh -i ~/.ssh/id_rsa $EC2_USER@$EC2_HOST << 'EOF'
+            # Kill any existing Spring Boot application running on the default port
+            PID=$(lsof -t -i:7070)
+            if [ -n "$PID" ]; then
+              kill -9 $PID
+            fi
+          
+            # Run the new JAR file
+            JAR_FILE=$(ls -t /home/$EC2_USER/*.jar | head -n 1)
+            nohup java -jar $JAR_FILE > spring-boot-app.log 2>&1 &
+          EOF

@@ -1,6 +1,6 @@
 package com.geeksforgeeks.gfgpay.useraccounts.repository;
 
-import com.geeksforgeeks.gfgpay.useraccounts.model.User;
+import com.geeksforgeeks.gfgpay.common.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
