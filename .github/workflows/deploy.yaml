@@ -13,11 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup JDK
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'corretto'
-          java-version: '17'
+      - name: Download and Install Amazon Corretto JDK
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y wget
+            wget -O corretto-17.deb https://corretto.aws/downloads/latest/amazon-corretto-17-x64-linux-jdk.deb
+            sudo dpkg -i corretto-17.deb
+            rm corretto-17.deb
+            export JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto
+            export PATH=$JAVA_HOME/bin:$PATH
+
+      - name: Verify Java Version
+        run: java -version
 
       - name: Build with Maven
         run: mvn clean install
