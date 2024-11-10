@@ -16,8 +16,8 @@ jobs:
       - name: Setup JDK
         uses: actions/setup-java@v2
         with:
-          distribution: "openjdk"
-          java-version: "17"
+          distribution: 'corretto'
+          java-version: '17'
 
       - name: Build with Maven
         run: mvn clean install
